@@ -1,5 +1,6 @@
-define(["require", "exports"], function(require, exports) {
-  return angular.module("ENV", [])
+'use strict';
+
+ angular.module("ENV", [])
 
 .constant("GOOGLE_API_URI", "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyAR3-1YSkP2LM-HuJshMivhOZuai9L5htM")
 
@@ -10,4 +11,3 @@ define(["require", "exports"], function(require, exports) {
 .constant("MEMORIAL_KEY", "-J_yaUS2gsgyLbDtgzQA")
 
 ;
-});

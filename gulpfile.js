@@ -33,7 +33,8 @@ gulp.task('config_dev', function () {
       name: 'ENV',
       // deps: ['ngAnimate'],
       constants: constants,
-      wrap: 'amd',
+      // wrap: 'amd',
+      wrap:'\'use strict\';\n\n <%= __ngModule %>',
     }))
     // Writes config.js to dist/ folder
     .pipe(gulp.dest('./www/js'));
@@ -51,7 +52,7 @@ gulp.task('config_beta', function () {
       name: 'ENV',
       // deps: ['ngAnimate'],
       constants: constants,
-      wrap: 'amd',
+      wrap:'\'use strict\';\n\n <%= __ngModule %>',
     }))
     // Writes config.js to dist/ folder
     .pipe(gulp.dest('./www/js'));
