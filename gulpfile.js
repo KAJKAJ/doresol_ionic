@@ -86,7 +86,10 @@ gulp.task('sass', function(done) {
 
 gulp.task('index', function(){
   return gulp.src('./www/index.html')
-    .pipe(inject(gulp.src(bowerFiles(), {read: false},{ base: './www/lib' }), {name: 'bower'}))
+    .pipe(inject(gulp.src(bowerFiles(), {read: false}),{
+      name: 'bower',
+      relative: true,
+     }))
     .pipe(inject(gulp.src('./www/js/**/*.js', {read: false}), {relative: true}))
     .pipe(inject(gulp.src('./www/css/**/*.css', {read: false}), {relative: true}))
     .pipe(gulp.dest('./www'));
