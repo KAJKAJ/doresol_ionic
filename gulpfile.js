@@ -23,14 +23,16 @@ gulp.task('beta', ['clean','sass','config_beta','index']);
 
 gulp.task('config_dev', function () {
   var constants = {
-    "FIREBASE_URI":"https://doresol-dev.firebaseio.com/",
-    "HOST":"http://doresol.net:8000",
-    "MEMORIAL_KEY":"-J_yaUS2gsgyLbDtgzQA"
+    ENV: {
+      FIREBASE_URI:"https://doresol-dev.firebaseio.com/",
+      HOST:"http://doresol.net:8000",
+      MEMORIAL_KEY:"-J_yaUS2gsgyLbDtgzQA"
+    }
   }
 
   gulp.src('config.json')
     .pipe(ngConstant({
-      name: 'ENV',
+      name: 'env',
       // deps: ['ngAnimate'],
       constants: constants,
       // wrap: 'amd',
