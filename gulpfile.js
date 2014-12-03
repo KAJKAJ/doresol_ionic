@@ -89,7 +89,15 @@ gulp.task('index', function(){
     .pipe(inject(gulp.src(bowerFiles(), {read: false}),{
       name: 'bower',
       relative: true,
+      transform: function (filepath) {
+        if (filepath.indexOf("angular.js")  > -1) {
+          return null;
+        }
+        // Use the default transform as fallback:
+        return inject.transform.apply(inject.transform, arguments);
+      }
      }))
+    .pipe(inject(gulp.src('./www/modules/**/*.js', {read: false}), {relative: true, name:'components'}))
     .pipe(inject(gulp.src('./www/js/**/*.js', {read: false}), {relative: true}))
     .pipe(inject(gulp.src('./www/css/**/*.css', {read: false}), {relative: true}))
     .pipe(gulp.dest('./www'));
