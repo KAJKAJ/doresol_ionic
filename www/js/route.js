@@ -64,6 +64,11 @@ angular.module('doresolApp')
       templateUrl: 'templates/signup.html',
       controller: 'LoginCtrl'
     })
+    .state('passwd_reset', {
+      url: '/passwd_reset',
+      templateUrl: 'templates/passwd_reset.html',
+      controller: 'LoginCtrl'
+    })
     .state('member', {
       url: '/member',
       templateUrl: 'templates/member.html',

@@ -72,5 +72,16 @@ angular
       }
     };
 
-    
+    $scope.passwdReset = function(form) {
+      console.log(form);
+
+      if(form.$valid) {
+        Auth.resetPassword(form.email.$viewValue).then(function () {
+          $scope.passwdErrors = "해당 이메일로 비밀번호 초기화가 발송되었습니다.";
+        }, function(error) {
+          $scope.passwdErrors = '등록되지 않은 이메일 주소입니다.';
+        }
+      )};
+    };
+
   });

@@ -157,6 +157,23 @@ angular.module('doresolApp')
       // return auth.$changePassword(email, oldPassword, newPassword);
     }
 
+    var resetPassword = function(email) {
+      var dfd = $q.defer();
+
+      console.log('--email---');
+      console.log(email);
+
+
+      authObj.$sendPasswordResetEmail(email).then(function() {
+        console.log("Password reset email sent successfully!");
+        dfd.resolve();
+      }).catch(function(error) {
+        dfd.reject(error);
+      });
+
+      return dfd.promise;
+    }
+
     return {
       register: register,
 
@@ -165,6 +182,8 @@ angular.module('doresolApp')
       loginOauth: loginOauth,
 
       logout: logout,
+
+      resetPassword: resetPassword,
 
       getCurrentUser:getCurrentUser,
 
