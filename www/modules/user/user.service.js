@@ -43,6 +43,8 @@ angular.module('doresolApp')
   }
 
   var create = function(newUser) {
+    var dfd = $q.defer();
+
     var profile = {
       name:newUser.email,
       file: {
@@ -53,13 +55,21 @@ angular.module('doresolApp')
     }
     var user = {
       uid: newUser.uid,
-      id: newUser.id,
+      // id: newUser.id,
       email: newUser.email,
       profile:profile,
       created_at: moment().format("YYYY-MM-DD HH:mm:ss")
     }
 
-    return users.$set(newUser.uid, user);
+    // return users.$set(newUser.uid, user);
+    users.$set(newUser.uid, user).then(function(value){
+      dfd.resolve(user);
+    },function(err){
+      dfd.reject(err);
+    });
+
+    return dfd.promise;
+
   }
 
   var update = function(userId, data) {

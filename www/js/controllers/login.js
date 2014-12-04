@@ -15,6 +15,7 @@ angular
     }
 
     var _afterLogin = function(userId){
+      // console.log(userId);
       Memorial.clearMyMemorial();
       // //set current memorial
       Memorial.setCurrentMemorial(ENV.MEMORIAL_KEY);
@@ -55,9 +56,10 @@ angular
       $scope.signupErrors = '';
       if(form.$valid) {
         Auth.register($scope.signupUser).then(function (value){
-          $scope.loginUser.email = $scope.signupUser.email;
-          $scope.loginUser.password = $scope.signupUser.password;
-          _login();
+          User.setCurrentUser();
+          User.getCurrentUserFromFirebase(value.uid).then(function(userData){
+            _afterLogin(userData.uid);
+          });
         }, function(error){
           var errorCode = error.code;
           console.log(error);
@@ -69,4 +71,6 @@ angular
         });
       }
     };
+
+    
   });
