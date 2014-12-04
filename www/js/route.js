@@ -1,6 +1,6 @@
 angular.module('doresolApp')
 .config(function($stateProvider, $urlRouterProvider) {
-   $urlRouterProvider.otherwise('/intro');
+   $urlRouterProvider.otherwise('/profile');
 
   /**
    * @ngdoc event
@@ -57,6 +57,11 @@ angular.module('doresolApp')
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html',
       controller: 'LoginCtrl'
     })
     .state('member', {

@@ -26,10 +26,19 @@ angular.module('doresolApp')
 
     var register =  function(user) {
     	var _register = function() {
-        return auth.$createUser(user.email,user.password).then( function (value){
-          value.email = user.email;
-          return value;
-        });
+
+        // return auth.$createUser(user.email,user.password).then( function (value){
+        //   value.email = user.email;
+        //   return value;
+        // });
+        var ref = new Firebase(ENV.FIREBASE_URI);
+
+        // return ref.createUser({email:user.email,password:user.password},function(error){
+        //   if(error){
+
+        //   }
+        //   retunr 
+        // });
       };
       return _register(user).then(User.create);
     }
