@@ -13,7 +13,8 @@ angular
 
   $scope.memorial = Memorial.getCurrentMemorial();
   $scope.user = User.getCurrentUser();
-
+  $scope.users = User.getUsersObject();
+  
   $scope.mode = 'overview';
   $scope.storiesArray = MyStory.getStoriesArray();
   $scope.storiesObject = MyStory.getStoriesObject();

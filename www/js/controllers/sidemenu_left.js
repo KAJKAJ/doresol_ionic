@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('doresolApp')
-  .controller('NavbarCtrl', function ($scope, $location, User, Auth, Composite) {
+  .controller('SideMenuLeftCtrl', function ($scope, $location, User, Auth, Composite) {
    
     $scope.user = User.getCurrentUser();
     

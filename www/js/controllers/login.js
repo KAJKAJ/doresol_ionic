@@ -21,7 +21,7 @@ angular
       Memorial.clearMyMemorial();
       // //set current memorial
       Memorial.setCurrentMemorial(ENV.MEMORIAL_KEY);
-      $state.go("profile");
+      $state.go("story");
     }
 
     var _login = function(){

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('doresolApp')
-  .factory('MyStory', function MyStory($firebase, Memorial, $q, $timeout, ENV) {
+  .factory('MyStory', function MyStory($firebase, Memorial, $q, $timeout, ENV, User) {
 
   var myStoriesArray = [];
   var myStoriesObject = {};
@@ -35,6 +35,7 @@ angular.module('doresolApp')
           var newStory = $firebase(newStoryRef).$asObject();
 
           newStory.$loaded().then(function(value) {
+            // User.setUsersObject(value.ref_user);
             assignStory(value);
             myStoriesCnt++;
           });
@@ -45,9 +46,13 @@ angular.module('doresolApp')
   });
 
   var assignStory = function(value) {
+    value.updatedAt = moment(value.updated_at).format("YYYY-MM-DD");
     myStoriesArray.push(value.$id);
     myStoriesObject[value.$id] = value;
     
+    User.setUsersObject(value.ref_user);
+// console.log(value);
+
     myStoriesArray.sort(function(aKey,bKey){
       var aValue = myStoriesObject[aKey];
       var bValue = myStoriesObject[bKey];
