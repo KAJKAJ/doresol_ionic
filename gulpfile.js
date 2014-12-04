@@ -44,14 +44,16 @@ gulp.task('config_dev', function () {
 
 gulp.task('config_beta', function () {
   var constants = {
-    "FIREBASE_URI":"https://doresol-beta.firebaseio.com/",
-    "HOST":"http://doresol.net",
-    "MEMORIAL_KEY":"-J_yaUS2gsgyLbDtgzQA"
+    ENV: {
+      FIREBASE_URI:"https://doresol-beta.firebaseio.com/",
+      HOST:"http://doresol.net",
+      MEMORIAL_KEY:"-J_yaUS2gsgyLbDtgzQA"
+    }
   }
 
   gulp.src('config.json')
     .pipe(ngConstant({
-      name: 'ENV',
+      name: 'env',
       // deps: ['ngAnimate'],
       constants: constants,
       wrap:'\'use strict\';\n\n <%= __ngModule %>',
