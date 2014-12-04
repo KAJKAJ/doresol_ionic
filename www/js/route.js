@@ -16,7 +16,7 @@ angular.module('doresolApp')
     .state('intro', {
       url: '/intro',
       templateUrl: 'templates/intro.html',
-      controller: 'IntroCtrl'
+      controller: 'LoginCtrl'
     })
     .state('profile', {
       url: '/profile',
