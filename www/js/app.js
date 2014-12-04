@@ -40,7 +40,7 @@ angular.module('doresolApp', ['ionic', 'firebase', 'env'])
         _getUserAuth().then(_getUserData).then(Composite.setMyMemorials).then(function(value){
           $state.go(toState, toParams);
         },function(error){
-          $state.go('login');
+          $state.go('intro');
         });
       }
     }

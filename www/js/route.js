@@ -1,6 +1,6 @@
 angular.module('doresolApp')
 .config(function($stateProvider, $urlRouterProvider) {
-   $urlRouterProvider.otherwise('/login');
+   $urlRouterProvider.otherwise('/intro');
 
   /**
    * @ngdoc event
@@ -13,6 +13,11 @@ angular.module('doresolApp')
    * - When the path is `'/'`, route to home
    * */
   $stateProvider
+    .state('intro', {
+      url: '/intro',
+      templateUrl: 'templates/intro.html',
+      controller: 'IntroCtrl'
+    })
     .state('profile', {
       url: '/profile',
       templateUrl: 'templates/profile.html',
