@@ -1,0 +1,16 @@
+<div class="scrollable">
+  <div class="scrollable-content">
+  	<div ng-if="memorial.public||!role.isGuest">
+  		<img ng-src="{{hostUrl + memorial.file.url}}" class="img-responsive img-center"></img>
+  		<ul class="list-group">
+			  <li class="list-group-item">이름: {{memorial.name}}</li>
+			  <li class="list-group-item">태어나신 날: {{memorial.dateOfBirth}}</li>
+			  <li class="list-group-item">돌아가신 날: {{memorial.dateOfDeath}}</li>
+			  <li class="list-group-item">{{memorial.description}}</li>
+			</ul>
+  	</div>
+  	<div ng-if="!memorial.public&&role.isGuest">
+  		<div ng-include="'modules/core/views/block.html'"></div>
+  	</div>
+  </div>
+</div>
